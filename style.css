@@ -2,10 +2,11 @@ html {
     min-height: 100%;
     max-height: 100%;
     background-image: url(https://s3.amazonaws.com/js30-cdn/smokey-mountains-kracked.jpg);
-    background-color: #00FFFF; /* Aqua */
+    background-color: #353535; /* Aqua */
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     font-family: sans-serif;
+    background-repeat: no-repeat;
 }
 
 body {
@@ -13,13 +14,6 @@ body {
     margin: 0;
     padding: 1%;
     float: left;
-}
-
-div {
-    max-width: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 :root {
@@ -37,7 +31,8 @@ h1 {
   -1px 1px 0 var(--textShadowColor);
     text-align: center;
     max-width: fit-content;
-    margin: 0 auto 5% auto;
+    margin: 0 auto 2% auto;
+    padding: inherit;
 }
 
 article,
@@ -130,6 +125,15 @@ sub {
 
 img {
     border: 0;
+    min-height: 12em;
+    min-width: 25vw;
+    border-radius: 10px 10px 0 0;
+}
+
+li {
+    margin: 3%;
+    min-width: 6vw;
+    padding: 1% 2%;
 }
 
 svg:not(:root) {
@@ -1071,6 +1075,10 @@ ol {
     list-style-type: square;
 }
 
+div {
+    max-width: min-content;
+}
+
 .section__inner {
     max-width: 1200px;
     margin: 0 auto;
@@ -1423,22 +1431,25 @@ ol {
 .video-list {
     flex-wrap: wrap;
     justify-content: center;
-    padding: 5% 5%;
+    padding: 2% 4%;
     display: flex;
+    min-width: fit-content;
+    max-height: 53vh;
 }
 
 .video-list__item {
     min-width: fit-content;
     max-width: fit-content;
-    min-height: fit-content;
-    max-height: fit-content;
+    max-height: 74vh;
     background: #fff;
-    margin-bottom: 2rem;
-    padding: 2rem;
+    padding: 0 2rem 2rem;
     list-style: none;
     transition: all .2s;
     position: relative;
     box-shadow: 0 0 10px 4px rgba(0, 0, 0, .2);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
 }
 
 .video-list__item:hover {
@@ -1453,18 +1464,22 @@ ol {
 }
 
 .video-list__image {
-    height: 150px;
+    min-height: fit-content;
+    min-width: fit-content;
+    text-align: center;
 }
 
 .video-list__image img {
     object-fit: cover;
-    width: calc(100% + 4rem);
     height: 100%;
-    margin-top: -2rem;
+    margin: 0 -2rem 0;
+    max-height: 192px;
+    max-width: 192px;
 }
 
 .video-list__title {
     margin-bottom: 1.5rem;
+    font-size: 17px;
 }
 
 .section__videos {
@@ -1494,17 +1509,22 @@ ol {
     padding: 0;
     list-style: none;
     max-width: min-content;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    min-width: 16em;
+    min-height: 4em;
 }
 
 .tags__item {
     text-transform: uppercase;
-    color: rgba(0, 0, 0, .5);
-    background: #ffc600;
-    margin-bottom: 5px;
-    padding: 2px 4px;
-    font-size: 11px;
+    margin: 3%;
+    padding: 1% 2%;
+    font-size: 9px;
     font-weight: 600;
-    display: inline-block;
+    display: flex;
+    min-width: fit-content;
+    align-items: center;
 }
 
 .tags__item--1 {
@@ -1775,7 +1795,7 @@ p.terms a {
     border-radius: 15px;
     box-shadow: 0 9px #999;
     min-width: max-content;
-    margin-top: 10%;
+    margin-top: 18%;
     background-color: var(--textShadowColor);
     color: #000080;
     font-weight: 700;
@@ -1790,3 +1810,29 @@ p.terms a {
     transform: translateY(4px);
     color: #ffffff;
   }
+
+  .tutorialContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80vw;
+}
+
+.test {
+    padding: 2%;
+}
+
+@media (max-width: 1279px) {
+
+.tutorialContainer {
+    flex-wrap: wrap;
+}
+ img {
+    min-width: 64vw;
+ }
+
+ .explanationButton {
+    margin-top: 0;
+ }
+
+}
