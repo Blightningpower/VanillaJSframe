@@ -27,6 +27,13 @@
       border-top: 2px solid black;
       padding-top: 1%;
     }
+
+    pre {
+      background-color: black;
+      color: #2666cb;
+      max-width: fit-content;
+      padding: inherit;
+    }
   </style>
 </head>
 
@@ -83,9 +90,19 @@
   </table>
 
   <h2>Exercise 6: Boulevards in Paris with 'de' in the Name</h2>
-  <p>Please copy and paste the code into the console of the following Wikipedia page to see the results:
-    <a
-      href="https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris">https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris</a>
+  <h3>Question: Create a list of Boulevards in Paris that contain 'de' anywhere in the name</h3>
+  <p>Copy and paste the code into the console of the following Wikipedia page to see the results:
+    <a href="https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris"
+      target="_blank">https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris</a>
+  <pre>
+        const category = document.querySelector('.mw-category');
+        const links = Array.from(category.querySelectorAll('a'));
+        const de = links
+                        .map(link => link.textContent)
+                        .filter(streetName => streetName.includes('de'));
+
+                        de
+    </pre>
   </p>
 
   <h2>Exercise 7: Sort People Alphabetically by Last Name</h2>
