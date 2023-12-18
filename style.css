@@ -1,12 +1,12 @@
+* {
+    scroll-behavior: smooth;
+}
+
 html {
     min-height: 100%;
     max-height: 100%;
-    background-image: url("https://s3.amazonaws.com/js30-cdn/smokey-mountains-kracked.jpg");
-    background-color: rgb(53, 53, 53);
-    background-size: cover;
     text-size-adjust: 100%;
     font-family: sans-serif;
-    background-repeat: repeat;
 }
 
 body {
@@ -14,28 +14,44 @@ body {
     margin: 0px;
     padding: 1%;
     float: left;
+    background: url(https://s3.amazonaws.com/js30-cdn/smokey-mountains-kracked.jpg) center no-repeat fixed;
+    background-size: cover;
+    position: relative;
+    background-color: rgb(53, 53, 53);
 }
 
 :root {
     --textShadowColor: #ffc600;
+    --titleBlue: rgb(0, 0, 128);
 }
 
 h1 {
     font-weight: bolder;
     text-transform: uppercase;
-    color: rgb(0, 0, 128);
-    text-shadow: 1px 1px 0 var(--textShadowColor), -1px -1px 0 var(--textShadowColor), 1px -1px 0 var(--textShadowColor), -1px 1px 0 var(--textShadowColor);
+    color: var(--titleBlue);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-align: center;
     max-width: fit-content;
     margin: 0 auto 2%;
     padding: inherit;
+    -webkit-text-stroke: 1px var(--textShadowColor);
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
-    display: block;
+h2 {
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: var(--textShadowColor);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    max-width: fit-content;
+    margin: 3% auto 0;
+    padding: inherit;
+    -webkit-text-stroke: 1px var(--titleBlue);
 }
 
-audio, canvas, video {
+audio,
+canvas,
+video {
     display: inline-block;
 }
 
@@ -44,54 +60,9 @@ audio:not([controls]) {
     display: none;
 }
 
-[hidden] {
-    display: none;
-}
-
-abbr[title] {
-    border-bottom: 1px dotted;
-}
-
-b, strong {
-    font-weight: 700;
-}
-
-dfn {
-    font-style: italic;
-}
-
-mark {
-    color: rgb(0, 0, 0);
-    background: rgb(255, 255, 0);
-}
-
-code, kbd, pre, samp {
-    font-family: monospace, serif;
-    font-size: 1em;
-}
-
 pre {
     white-space: pre-wrap;
     overflow-wrap: break-word;
-}
-
-small {
-    font-size: 80%;
-}
-
-sub, sup {
-    vertical-align: baseline;
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-}
-
-sup {
-    top: -0.5em;
-}
-
-sub {
-    bottom: -0.25em;
 }
 
 img {
@@ -107,45 +78,25 @@ li {
     padding: 1% 2%;
 }
 
-svg:not(:root) {
-    overflow: hidden;
-}
-
-fieldset {
-    border: 1px solid silver;
-    margin: 0px 2px;
-    padding: 0.35em 0.625em 0.75em;
-}
-
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
     margin: 0px;
     font-family: inherit;
     font-size: 100%;
 }
 
-button, input {
+button,
+input {
     line-height: normal;
 }
 
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
     cursor: pointer;
-}
-
-button[disabled], input[disabled] {
-    cursor: default;
-}
-
-input[type="checkbox"], input[type="radio"] {
-    box-sizing: border-box;
-    padding: 0px;
-}
-
-input[type="search"] {
-    box-sizing: content-box;
-}
-
-input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
-    appearance: none;
 }
 
 textarea {
@@ -158,21 +109,22 @@ table {
     border-spacing: 0px;
 }
 
-.clearfix::after {
-    visibility: hidden;
-    content: " ";
-    clear: both;
-    height: 0px;
-    font-size: 0px;
-    display: block;
-}
-
-* {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
-input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], select:focus, textarea {
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select:focus,
+textarea {
     font-size: 16px;
 }
 
@@ -190,7 +142,12 @@ input[type="color"], input[type="date"], input[type="datetime"], input[type="dat
 }
 
 @-webkit-keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0px);
     }
 
@@ -204,7 +161,12 @@ input[type="color"], input[type="date"], input[type="datetime"], input[type="dat
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0px);
     }
 
@@ -218,29 +180,47 @@ input[type="color"], input[type="date"], input[type="datetime"], input[type="dat
 }
 
 @-webkit-keyframes shake {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translate(0px);
     }
 
-    10%, 30%, 50%, 70%, 90% {
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
         transform: translate(-10px);
     }
 
-    20%, 40%, 60%, 80% {
+    20%,
+    40%,
+    60%,
+    80% {
         transform: translate(10px);
     }
 }
 
 @keyframes shake {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translate(0px);
     }
 
-    10%, 30%, 50%, 70%, 90% {
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
         transform: translate(-10px);
     }
 
-    20%, 40%, 60%, 80% {
+    20%,
+    40%,
+    60%,
+    80% {
         transform: translate(10px);
     }
 }
@@ -511,7 +491,7 @@ a.video-link {
     display: flex;
 }
 
-.video__nowplaying > * {
+.video__nowplaying>* {
     padding: 10px;
 }
 
@@ -634,7 +614,9 @@ a.video-link {
 }
 
 @media (max-width: 844px) {
-    .viewer .notes, .viewer .video-list {
+
+    .viewer .notes,
+    .viewer .video-list {
         grid-column: 1 / -1;
     }
 
@@ -664,7 +646,7 @@ code {
     font-family: "Operator Mono", "Fira Code", monospace;
 }
 
-:not(pre) > code {
+:not(pre)>code {
     background: rgb(246, 246, 246);
     border: 1px solid rgba(0, 0, 0, 0.05);
     padding: 0px 3.5px;
@@ -754,7 +736,9 @@ div.countdownBanner.black-friday.newyear .well-actually {
     font-size: 2rem;
 }
 
-div.countdownBanner.black-friday h1, div.countdownBanner.black-friday p, div.countdownBanner.black-friday span {
+div.countdownBanner.black-friday h1,
+div.countdownBanner.black-friday p,
+div.countdownBanner.black-friday span {
     color: rgb(255, 255, 255);
     margin: 0px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -765,18 +749,26 @@ div.countdownBanner.black-friday h1, div.countdownBanner.black-friday p, div.cou
 }
 
 @media (max-width: 1200px) {
-    div.countdownBanner.black-friday h1, div.countdownBanner.black-friday p, div.countdownBanner.black-friday span {
+
+    div.countdownBanner.black-friday h1,
+    div.countdownBanner.black-friday p,
+    div.countdownBanner.black-friday span {
         font-size: 25px;
     }
 }
 
 @media (max-width: 650px) {
-    div.countdownBanner.black-friday h1, div.countdownBanner.black-friday p, div.countdownBanner.black-friday span {
+
+    div.countdownBanner.black-friday h1,
+    div.countdownBanner.black-friday p,
+    div.countdownBanner.black-friday span {
         font-size: 20px;
     }
 }
 
-div.countdownBanner.black-friday h1.well-actually, div.countdownBanner.black-friday p.well-actually, div.countdownBanner.black-friday span.well-actually {
+div.countdownBanner.black-friday h1.well-actually,
+div.countdownBanner.black-friday p.well-actually,
+div.countdownBanner.black-friday span.well-actually {
     font-size: 12px;
 }
 
@@ -800,7 +792,7 @@ div.countdownBanner.black-friday .bf-countdown-clock .time-left {
     display: flex;
 }
 
-div.countdownBanner.black-friday .bf-countdown-clock .time-left > span {
+div.countdownBanner.black-friday .bf-countdown-clock .time-left>span {
     flex-direction: column;
     display: flex;
 }
@@ -824,7 +816,7 @@ div.countdownBanner.black-friday a {
     display: inline;
 }
 
-div.countdownBanner.black-friday + header {
+div.countdownBanner.black-friday+header {
     margin-top: 0px;
 }
 
@@ -937,7 +929,8 @@ a {
     border: none;
 }
 
-ul, ol {
+ul,
+ol {
     margin: 0px;
     list-style-type: square;
 }
@@ -1031,7 +1024,8 @@ div {
     box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 0px 10px, rgba(0, 0, 0, 0.18) 0px 0px 10px;
 }
 
-.signup__step, .signup__step--1 {
+.signup__step,
+.signup__step--1 {
     display: flex;
 }
 
@@ -1042,11 +1036,12 @@ div {
     display: none;
 }
 
-.signup__step--2 > * {
+.signup__step--2>* {
     width: 100%;
 }
 
-.signup__step--2 p, .signup__step--2 h3 {
+.signup__step--2 p,
+.signup__step--2 h3 {
     padding: 1rem;
 }
 
@@ -1293,7 +1288,7 @@ div {
     max-width: fit-content;
     min-height: fit-content;
     background: rgb(255, 255, 255);
-    padding: 0px 2rem 2rem;
+    padding: 0 2rem 2rem;
     list-style: none;
     transition: all 0.2s ease 0s;
     position: relative;
@@ -1301,6 +1296,7 @@ div {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
+    margin: 0;
 }
 
 .video-list__item:hover {
@@ -1361,15 +1357,15 @@ div {
     max-width: min-content;
     display: flex;
     flex-flow: row wrap;
-    min-width: 16em;
-    min-height: 4em;
+    min-width: max-content;
+    min-height: max-content;
 }
 
 .tags__item {
     text-transform: uppercase;
     margin: 3%;
     padding: 1% 2%;
-    font-size: 9px;
+    font-size: 0.6rem;
     font-weight: 600;
     display: flex;
     min-width: fit-content;
@@ -1415,7 +1411,8 @@ div {
     color: rgb(229, 7, 20);
 }
 
-.section__footer .share, .section__footer .share__option {
+.section__footer .share,
+.section__footer .share__option {
     border: 0px;
 }
 
@@ -1526,7 +1523,8 @@ p.terms a {
         min-width: 0px;
     }
 
-    .signup, .signup__step {
+    .signup,
+    .signup__step {
         flex-wrap: wrap;
     }
 
@@ -1647,7 +1645,7 @@ p.terms a {
 
 .explanationButton:hover {
     background-color: rgb(76, 175, 80);
-    color: cyan;
+    color: #fff;
 }
 
 .explanationButton:active {
@@ -1660,16 +1658,24 @@ p.terms a {
 .tutorialContainer {
     display: flex;
     flex-flow: row wrap;
-    align-items: center;
     min-width: 88vw;
     max-width: fit-content;
     max-height: fit-content;
     margin: 0 auto;
     justify-content: center;
+    flex-direction: column;
+}
+
+.newSection,
+.oldSection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .test {
-    padding: 2%;
+    padding: 0 2%;
+    transform: scale(0.9);
 }
 
 @media (max-width: 1279px) {
@@ -1686,4 +1692,40 @@ p.terms a {
     .explanationButton {
         margin-top: 0px;
     }
+}
+
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    z-index: 99;
+    border: 2px solid var(--titleBlue);
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+    padding: 1%;
+    border-radius: 50%;
+}
+
+.up-arrow {
+    stroke: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    width: 24px;
+    height: 24px;
+    fill: none;
+}
+
+@media screen and (max-width: 1279px) {
+    #scrollToTopBtn {
+        padding: 2%;
+    }
+}
+
+#scrollToTopBtn:hover {
+    border: 2px solid var(--textShadowColor);
+    background-color: var(--titleBlue);
+    color: white;
 }
