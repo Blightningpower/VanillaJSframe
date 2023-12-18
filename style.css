@@ -4,7 +4,6 @@
 
 html {
     min-height: 100%;
-    max-height: 100%;
     text-size-adjust: 100%;
     font-family: sans-serif;
 }
@@ -44,7 +43,7 @@ h2 {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-align: center;
     max-width: fit-content;
-    margin: 3% auto 0;
+    margin: 10em auto 0 auto;
     padding: inherit;
     -webkit-text-stroke: 1px var(--titleBlue);
 }
@@ -1657,12 +1656,10 @@ p.terms a {
 
 .tutorialContainer {
     display: flex;
-    flex-flow: row wrap;
     min-width: 88vw;
     max-width: fit-content;
     max-height: fit-content;
     margin: 0 auto;
-    justify-content: center;
     flex-direction: column;
 }
 
@@ -1718,14 +1715,12 @@ p.terms a {
     fill: none;
 }
 
-@media screen and (max-width: 1279px) {
-    #scrollToTopBtn {
-        padding: 2%;
-    }
-}
-
 #scrollToTopBtn:hover {
     border: 2px solid var(--textShadowColor);
     background-color: var(--titleBlue);
     color: white;
+}
+
+.newChallengesTitle {
+    margin-top: 2em;
 }
