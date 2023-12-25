@@ -930,7 +930,7 @@ a {
 
 ul,
 ol {
-    margin: 0px;
+    margin: 0 0 6rem 0;
     list-style-type: square;
 }
 
@@ -1285,7 +1285,7 @@ div {
 .video-list__item {
     min-width: fit-content;
     max-width: fit-content;
-    min-height: fit-content;
+    min-height: 83vh;
     background: rgb(255, 255, 255);
     padding: 0 2rem 2rem;
     list-style: none;
@@ -1672,7 +1672,7 @@ p.terms a {
 
 .test {
     padding: 0 2%;
-    transform: scale(0.9);
+    transform: scale(0.8);
 }
 
 @media (max-width: 1279px) {
