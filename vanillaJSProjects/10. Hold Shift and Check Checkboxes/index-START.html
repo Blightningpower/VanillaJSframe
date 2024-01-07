@@ -55,8 +55,8 @@
 
     .add-task {
       margin: 20px;
-    border-bottom: 2px solid blue;
-    padding: 1rem;
+      border-bottom: 2px solid blue;
+      padding: 1rem;
     }
 
     .delete-task {
@@ -67,7 +67,7 @@
   </style>
 
   <div class="inbox">
-  
+
     <div class="add-task">
       <input type="text" id="newTask" placeholder="Add a new task" />
       <button onclick="addTask()">Add Task</button>
@@ -77,7 +77,7 @@
     <div class="item">
       <input type="checkbox">
       <p>Task 1</p>
-  
+
       <span class="delete-task" onclick="deleteTask(this.parentNode)">Delete</span>
     </div>
 
@@ -96,66 +96,76 @@
   </div>
 
   <script>
-    const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
-    let lastChecked;
 
-    function handleCheck(e) {
-      // checks if shift key is down and if a checkbox is being checked
-      let inBetween = false;
+let lastChecked;
+const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
 
-      if (e.shiftKey && this.checked) {
-        checkboxes.forEach((checkbox) => {
-          if (checkbox === this || checkbox === lastChecked) {
-            inBetween = !inBetween;
-            console.log("These are checked in between");
-          }
+function handleCheck(e) {
+  let inBetween = false;
+  const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
 
-          if (inBetween) {
-            checkbox.checked = true;
-          }
-        });
+  if (e.shiftKey && this.checked) {
+    checkboxes.forEach((checkbox) => {
+      if (checkbox === this || checkbox === lastChecked) {
+        inBetween = !inBetween;
+        console.log("These are checked in between");
       }
 
-      lastChecked = this;
-    }
-
-    checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
-
-    // Added script
-    const addTaskInput = document.getElementById('newTask');
-
-    function addTask() {
-      const newTaskText = addTaskInput.value.trim();
-      if (newTaskText !== '') {
-        const newItem = document.createElement('div');
-        newItem.classList.add('item');
-
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-
-        const paragraph = document.createElement('p');
-        paragraph.textContent = newTaskText;
-
-        const deleteButton = document.createElement('span');
-        deleteButton.classList.add('delete-task');
-        deleteButton.textContent = 'Delete';
-        deleteButton.onclick = function () {
-          deleteTask(newItem);
-        };
-
-        newItem.appendChild(checkbox);
-        newItem.appendChild(paragraph);
-        newItem.appendChild(deleteButton);
-
-        document.querySelector('.inbox').appendChild(newItem);
-
-        addTaskInput.value = ''; // Clear the input field after adding a task
+      if (inBetween) {
+        checkbox.checked = true;
       }
-    }
+    });
+  }
 
-    function deleteTask(taskItem) {
-      taskItem.parentNode.removeChild(taskItem);
-    }
+  lastChecked = this;
+}
+
+function bindCheckboxListeners() {
+  const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+  checkboxes.forEach(checkbox => checkbox.removeEventListener('click', handleCheck));
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+}
+
+const addTaskInput = document.getElementById('newTask');
+
+function addTask() {
+  const newTaskText = addTaskInput.value.trim();
+  if (newTaskText !== '') {
+    const newItem = document.createElement('div');
+    newItem.classList.add('item');
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+
+    const paragraph = document.createElement('p');
+    paragraph.textContent = newTaskText;
+
+    const deleteButton = document.createElement('span');
+    deleteButton.classList.add('delete-task');
+    deleteButton.textContent = 'Delete';
+    deleteButton.onclick = function () {
+      deleteTask(newItem);
+      bindCheckboxListeners(); // Update event listeners after deleting a task
+    };
+
+    newItem.appendChild(checkbox);
+    newItem.appendChild(paragraph);
+    newItem.appendChild(deleteButton);
+
+    document.querySelector('.inbox').appendChild(newItem);
+
+    addTaskInput.value = ''; // Clear the input field after adding a task
+    bindCheckboxListeners(); // Update event listeners after adding a task
+  }
+}
+
+function deleteTask(taskItem) {
+  taskItem.parentNode.removeChild(taskItem);
+  bindCheckboxListeners(); // Call it after deleting a task
+}
+
+bindCheckboxListeners();
+
   </script>
 </body>
 
