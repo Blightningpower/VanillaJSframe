@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Array Cardio 💪💪</title>
+  <link rel="icon" href="https://fav.farm/✅" />
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    body {
+      padding: 1%;
+    }
+
+    h2 {
+      border-top: 2px solid black;
+      padding-top: 1%;
+    }
+
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      text-align: justify;
+      height: fit-content;
+      font-size: 1vw;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    const people = [
+      { name: 'Wes', year: 1988 },
+      { name: 'Kait', year: 1986 },
+      { name: 'Irv', year: 1970 },
+      { name: 'Lux', year: 2015 }
+    ];
+
+    const comments = [
+      { text: 'Love this!', id: 523423 },
+      { text: 'Super good', id: 823423 },
+      { text: 'You are the best', id: 2039842 },
+      { text: 'Ramen is my fav food ever', id: 123523 },
+      { text: 'Nice Nice Nice!', id: 542328 }
+    ];
+
+    // Exercise 1: Check if at least one person is 19 or older
+    const isAdultResult = people.some(person => ((new Date()).getFullYear()) - person.year >= 19);
+    displayExercise(
+      1,
+      "Is at least one person 19 or older?",
+      people,
+      isAdultResult,
+      "people.some(person => ((new Date()).getFullYear()) - person.year >= 19)",
+      "people"
+    );
+
+    // Exercise 2: Check if everyone is 19 or older
+    const allAdultsResult = people.every(person => ((new Date()).getFullYear()) - person.year >= 19);
+    displayExercise(
+      2,
+      "Is everyone 19 or older?",
+      people,
+      allAdultsResult,
+      "people.every(person => ((new Date()).getFullYear()) - person.year >= 19)",
+      "people"
+    );
+
+    // Exercise 3: Find a comment with ID 823423
+    const foundComment = comments.find(comment => comment.id === 823423);
+    displayExercise(
+      3,
+      "Find the comment with the ID of 823423",
+      comments,
+      foundComment,
+      "comments.find(comment => comment.id === 823423)",
+      "comments"
+    );
+
+    // Exercise 4: Find index of comment with ID 823423 and delete it
+    const indexToDelete = comments.findIndex(comment => comment.id === 823423);
+    const deletedComment = comments.splice(indexToDelete, 1)[0];
+    displayExercise(
+      4,
+      "Find the comment with the ID of 823423 and delete it",
+      comments,
+      deletedComment,
+      "const indexToDelete = comments.findIndex(comment => comment.id === 823423);\ncomments.splice(indexToDelete, 1)[0];",
+      "comments"
+    );
+
+    function displayExercise(exerciseNumber, question, array, result, answer, arrayName) {
+      const exerciseContainer = document.createElement('div');
+      const h2 = document.createElement('h2');
+      h2.textContent = `Exercise ${exerciseNumber}`;
+      const h3 = document.createElement('h3');
+      h3.textContent = `Question: ${question}`;
+      const arrayDisplay = document.createElement('pre');
+      arrayDisplay.textContent = `Array ${arrayName ? `(${arrayName}):` : ':'} ${JSON.stringify(array, null, 2)}`;
+      const resultDisplay = document.createElement('pre');
+      resultDisplay.textContent = `Result: ${result}`;
+      const answerDisplay = document.createElement('pre');
+      answerDisplay.textContent = `Answer:\n${answer}\n\nExplanation:\n${explainAnswer(answer, array, arrayName)}`;
+
+      exerciseContainer.appendChild(h2);
+      exerciseContainer.appendChild(h3);
+      exerciseContainer.appendChild(arrayDisplay);
+      exerciseContainer.appendChild(resultDisplay);
+      exerciseContainer.appendChild(answerDisplay);
+
+      document.body.appendChild(exerciseContainer);
+    }
+
+    function explainAnswer(answer, array, arrayName) {
+      switch (answer) {
+        case "people.some(person => ((new Date()).getFullYear()) - person.year >= 19)":
+          return `The 'some' method checks if at least one element in ${arrayName} satisfies the condition of being 19 or older.`;
+
+        case "people.every(person => ((new Date()).getFullYear()) - person.year >= 19)":
+          return `The 'every' method checks if every element in ${arrayName} satisfies the condition of being 19 or older.`;
+
+        case "comments.find(comment => comment.id === 823423)":
+          return `The 'find' method is used to find a comment in ${arrayName} with the ID of 823423.`;
+
+        case "const indexToDelete = comments.findIndex(comment => comment.id === 823423);\ncomments.splice(indexToDelete, 1)[0];":
+          return `The 'findIndex' method is used to find the index of a comment in ${arrayName} with the ID of 823423. Then, the 'splice' method is used to remove the comment from the array.`;
+
+        default:
+          return "";
+      }
+    }
+  </script>
+</body>
+
+</html>

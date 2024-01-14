@@ -7,12 +7,14 @@
   <link rel="icon" href="https://fav.farm/✅" />
 
   <style>
+    p {
+      position: relative;
+    }
 
     p:hover {
       cursor: pointer;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
-
   </style>
 </head>
 
@@ -29,7 +31,7 @@
       p.style.color = '#BADA55';
       p.style.fontSize = '50px';
       p.style.textShadow = 'none';
-      p.style.cursor = 'auto'
+      p.style.cursor = 'pointer'
 
       if (clearConsole) {
         consoleExercises();
@@ -40,59 +42,109 @@
 
     function consoleExercises() {
       // Regular
+      console.log('%c Code:', 'font-size: 20px;');
+      console.log('console.log("hello");');
+      console.log('%c Result:', 'font-size: 20px;');
       console.log('hello');
+      console.log('-'.repeat(50)); // Separator line
 
       // Interpolated
+      console.log('%c Code:', 'font-size: 20px;');
+      console.log('console.log("Hello I am a %s string!", "💩");');
+      console.log('%c Result:', 'font-size: 20px;');
       console.log('Hello I am a %s string!', '💩');
+      console.log('-'.repeat(50)); // Separator line
 
       // Styled
-      // console.log('%c I am some great text', 'font-size:50px; background:red; text-shadow: 10px 10px 0 blue')
+      console.log('%c Code:', 'font-size: 20px;');
+      console.log('console.log("%c I am some great text", "font-size:50px; background:red; text-shadow: 10px 10px 0 blue")');
+      console.log('%c Result:', 'font-size: 20px;');
+      console.log('%c I am some great text', 'font-size:50px; background:red; text-shadow: 10px 10px 0 blue');
+      console.log('-'.repeat(50)); // Separator line
 
       // warning!
+      console.log('%c Code:', 'font-size: 20px;');
+      console.log('console.warn("OH NO!");');
+      console.log('%c Result:', 'font-size: 20px;');
       console.warn('OH NO!');
+      console.log('-'.repeat(50)); // Separator line
 
       // Error :|
+      console.log('%c Code:', 'font-size: 20px;');
+      console.log('console.error("This is not good");');
+      console.log('%c Result:', 'font-size: 20px;');
       console.error('This is not good');
+      console.log('-'.repeat(50)); // Separator line
 
       // Info
+      console.log('%c Code:', 'font-size: 20px;');
+      console.log('console.info("Did you know that a chicken once lived for 18 months without a head");');
+      console.log('%c Result:', 'font-size: 20px;');
       console.info('Did you know that a chicken once lived for 18 months without a head');
+      console.log('-'.repeat(50)); // Separator line
 
       // Testing
+      console.log('%c Code:', 'font-size: 20px;');
+      console.log('console.assert(p.classList.contains("ouch"), "That is wrong!");');
+      console.log('%c Result:', 'font-size: 20px;');
       const p = document.querySelector('p');
-
       console.assert(p.classList.contains('ouch'), 'That is wrong!');
+      console.log('-'.repeat(50)); // Separator line
 
       // Viewing DOM Elements
+      console.log('%c Code:', 'font-size: 20px;');
+      console.log('console.log(p);\nconsole.dir(p);');
+      console.log('%c Result:', 'font-size: 20px;');
       console.log(p);
       console.dir(p);
+      console.log('-'.repeat(50)); // Separator line
 
       // Grouping together
       dogs.forEach(dog => {
+        console.log('%c Code:', 'font-size: 20px;');
+        console.log(`console.groupCollapsed('${dog.name}');
+console.log('This is ${dog.name}');
+console.log('${dog.name} is ${dog.age} years old');
+console.log('${dog.name} is ${dog.age * 7} dog years old');
+console.groupEnd('${dog.name}');`);
+        console.log('%c Result:', 'font-size: 20px;');
         console.groupCollapsed(`${dog.name}`);
         console.log(`This is ${dog.name}`);
         console.log(`${dog.name} is ${dog.age} years old`);
         console.log(`${dog.name} is ${dog.age * 7} dog years old`);
         console.groupEnd(`${dog.name}`);
+        console.log('-'.repeat(50)); // Separator line
       });
 
-      // counting
-
+      // Counting
+      console.log('%c Code:', 'font-size: 20px;');
+      console.log("console.count('Wes');\nconsole.count('Steve');\nconsole.count('Steve');\nconsole.count('Wes');");
+      console.log('%c Result:', 'font-size: 20px;');
       console.count('Wes');
       console.count('Steve');
       console.count('Steve');
       console.count('Wes');
+      console.log('-'.repeat(50)); // Separator line
 
-      // timing
+      // Timing
+      console.log('%c Code:', 'font-size: 20px;');
+      console.log("console.time('fetching data');\nfetch('https://api.github.com/users/wesbos')\n .then(data => data.json())\n .then(data => {\n console.timeEnd('fetching data');\n console.log(data);\n });");
+      console.log('%c Result:', 'font-size: 20px;');
       console.time('fetching data');
       fetch('https://api.github.com/users/wesbos')
         .then(data => data.json())
         .then(data => {
           console.timeEnd('fetching data');
           console.log(data);
+          console.log('-'.repeat(50)); // Separator line
         });
 
+      // Displaying as Table
+      console.log('%c Code:', 'font-size: 20px;');
+      console.log('console.table(dogs);');
+      console.log('%c Result:', 'font-size: 20px;');
       console.table(dogs);
-
+      console.log('-'.repeat(50)); // Separator line
     }
 
   </script>

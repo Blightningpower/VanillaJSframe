@@ -35,6 +35,76 @@
       background-color: black;
       color: aliceblue;
       padding: 1%;
+      display: grid;
+      min-height: -webkit-fill-available;
+      z-index: 100;
+    }
+
+    .settings label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .settings input,
+    .settings button {
+      margin-bottom: 10px;
+    }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 5px;
+      justify-content: space-between;
+    }
+
+    .option label {
+      margin: 0 10px;
+    }
+
+    .circle-button {
+      display: flex;
+      width: 20px;
+      height: 20px;
+      background-color: grey;
+      border-radius: 50%;
+      color: white;
+      text-align: center;
+      line-height: 40px;
+      font-size: 13px;
+      font-family: Arial, sans-serif;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer
+    }
+
+    .circle-button .tooltip {
+      visibility: hidden;
+      min-width: 9rem;
+      background-color: grey;
+      color: #fff;
+      text-align: left;
+      padding: 1rem;
+      border-radius: 6px;
+      position: absolute;
+      z-index: 1;
+      top: 100%;
+      left: 1.3rem;
+      line-height: normal;
+    }
+
+    .circle-button:hover .tooltip {
+      visibility: visible;
+    }
+
+    footer {
+      background-color: grey;
+      position: fixed;
+      bottom: 0;
+      padding: 5px 2rem 5px 15rem;
+      color: aliceblue;
+      font-size: 15px;
+      text-align: left;
     }
   </style>
 </head>
@@ -44,87 +114,148 @@
   <div class="settings">
     <p>Choose an effect:</p>
 
-    <label for="none">none</label>
-    <input type="radio" id="none" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">This is the default mode.</span>
+      </div>
+      <label for="none">none</label>
+      <input type="radio" id="none" name="effect" checked>
+    </div>
 
-    <label for="source-atop">source-atop</label>
-    <input type="radio" id="source-atop" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">The new shape is only drawn where it overlaps the existing canvas content.</span>
+      </div>
+      <label for="source-atop">source-atop</label>
+      <input type="radio" id="source-atop" name="effect">
+    </div>
 
-    <label for="multiply">multiply</label>
-    <input type="radio" id="multiply" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">
+          The pixels of the top layer are multiplied with the corresponding pixels of the bottom
+          layer. A darker picture is the result.
+        </span>
+      </div>
+      <label for="multiply">multiply</label>
+      <input type="radio" id="multiply" name="effect">
+    </div>
 
-    <label for="destination-over">destination-over</label>
-    <input type="radio" id="destination-over" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">New shapes are drawn behind the existing canvas content.</span>
+      </div>
+      <label for="destination-over">destination-over</label>
+      <input type="radio" id="destination-over" name="effect">
+    </div>
 
-    <label for="destination-in">destination-in</label>
-    <input type="radio" id="destination-in" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">
+          The existing canvas content is kept where both the new shape and existing canvas content
+          overlap. Everything else is made transparent.
+        </span>
+      </div>
+      <label for="destination-in">destination-in</label>
+      <input type="radio" id="destination-in" name="effect">
+    </div>
 
-    <label for="destination-out">destination-out</label>
-    <input type="radio" id="destination-out" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">The existing content is kept where it doesn't overlap the new shape.</span>
+      </div>
+      <label for="destination-out">destination-out</label>
+      <input type="radio" id="destination-out" name="effect">
+    </div>
 
-    <label for="destination-atop">destination-atop</label>
-    <input type="radio" id="destination-atop" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">The new shape is only drawn where it overlaps the existing canvas content.</span>
+      </div>
+      <label for="destination-atop">destination-atop</label>
+      <input type="radio" id="destination-atop" name="effect">
+    </div>
 
-    <label for="lighter">lighter</label>
-    <input type="radio" id="lighter" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">Shapes are made transparent where both overlap and drawn normal everywhere else.</span>
+      </div>
+      <label for="xor">xor</label>
+      <input type="radio" id="xor" name="effect">
+    </div>
 
-    <label for="copy">copy</label>
-    <input type="radio" id="copy" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">Retains the darkest pixels of both layers.</span>
+      </div>
+      <label for="darken">darken</label>
+      <input type="radio" id="darken" name="effect">
+    </div>
 
-    <label for="xor">xor</label>
-    <input type="radio" id="xor" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">Retains the lightest pixels of both layers.</span>
+      </div>
+      <label for="lighten">lighten</label>
+      <input type="radio" id="lighten" name="effect">
+    </div>
 
-    <label for="screen">screen</label>
-    <input type="radio" id="screen" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">
+          Subtracts the bottom layer from the top layer — or the other way round — to always get a
+          positive value.
+        </span>
+      </div>
+      <label for="difference">difference</label>
+      <input type="radio" id="difference" name="effect">
+    </div>
 
-    <label for="overlay">overlay</label>
-    <input type="radio" id="overlay" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">Like difference, but with lower contrast.</span>
+      </div>
+      <label for="exclusion">exclusion</label>
+      <input type="radio" id="exclusion" name="effect">
+    </div>
 
-    <label for="darken">darken</label>
-    <input type="radio" id="darken" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">
+          Preserves the luma of the bottom layer, while adopting the hue and chroma of the top
+          layer.
+        </span>
+      </div>
+      <label for="color">color</label>
+      <input type="radio" id="color" name="effect">
+    </div>
 
-    <label for="lighten">lighten</label>
-    <input type="radio" id="lighten" name="effect">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">Change the width of the tool.</span>
+      </div>
+      <label for="line-width">Line Width:</label>
+      <input type="number" id="line-width" value="50" min="1" max="100">
+    </div>
 
-    <label for="color-dodge">color-dodge</label>
-    <input type="radio" id="color-dodge" name="effect">
-
-    <label for="color-burn">color-burn</label>
-    <input type="radio" id="color-burn" name="effect">
-
-    <label for="hard-light">hard-light</label>
-    <input type="radio" id="hard-light" name="effect">
-
-    <label for="soft-light">soft-light</label>
-    <input type="radio" id="soft-light" name="effect">
-
-    <label for="difference">difference</label>
-    <input type="radio" id="difference" name="effect">
-
-    <label for="exclusion">exclusion</label>
-    <input type="radio" id="exclusion" name="effect">
-
-    <label for="hue">hue</label>
-    <input type="radio" id="hue" name="effect">
-
-    <label for="saturation">saturation</label>
-    <input type="radio" id="saturation" name="effect">
-
-    <label for="color">color</label>
-    <input type="radio" id="color" name="effect">
-
-    <label for="luminosity">luminosity</label>
-    <input type="radio" id="luminosity" name="effect">
-
-    <label for="line-width">Line Width:</label>
-    <input type="number" id="line-width" value="50" min="1" max="100">
-
-    <label for="auto-width">Auto Width</label>
-    <input type="checkbox" id="auto-width">
+    <div class="option">
+      <div class="circle-button">i
+        <span class="tooltip">Automatically changes th widt of the tool up to 100px and back.</span>
+      </div>
+      <label for="auto-width">Auto Width</label>
+      <input type="checkbox" id="auto-width">
+    </div>
 
     <!-- Clear Canvas Button -->
     <button id="clear-canvas">Clear Canvas</button>
   </div>
+  <footer>
+    © 2024 Mozilla Foundation. All rights reserved. The content on this page is licensed under the Creative Commons
+    Attribution-ShareAlike 2.5 Generic license or any later version. See the 'License' section in the provided link:
+    <br>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation"
+      target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation</a>
+  </footer>
 
   <canvas id="draw"></canvas>
 
@@ -136,7 +267,7 @@
     ctx.strokeStyle = '#BADA55';
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    ctx.lineWidth = 50; // Set initial line width to 1px
+    ctx.lineWidth = 50;
     ctx.globalCompositeOperation = 'source-over';
 
     let isDrawing = false;
@@ -175,7 +306,6 @@
       }
     }
 
-
     canvas.addEventListener('mousedown', (e) => {
       isDrawing = true;
       [lastX, lastY] = [e.offsetX, e.offsetY];
@@ -211,35 +341,14 @@
           case 'destination-atop':
             ctx.globalCompositeOperation = 'destination-atop';
             break;
-          case 'lighter':
-            ctx.globalCompositeOperation = 'lighter';
-            break;
-          case 'copy':
-            ctx.globalCompositeOperation = 'copy';
-            break;
           case 'xor':
             ctx.globalCompositeOperation = 'xor';
-            break;
-          case 'screen':
-            ctx.globalCompositeOperation = 'screen';
-            break;
-          case 'overlay':
-            ctx.globalCompositeOperation = 'overlay';
             break;
           case 'darken':
             ctx.globalCompositeOperation = 'darken';
             break;
           case 'lighten':
             ctx.globalCompositeOperation = 'lighten';
-            break;
-          case 'color-dodge':
-            ctx.globalCompositeOperation = 'color-dodge';
-            break;
-          case 'color-burn':
-            ctx.globalCompositeOperation = 'color-burn';
-            break;
-          case 'hard-light':
-            ctx.globalCompositeOperation = 'hard-light';
             break;
           case 'soft-light':
             ctx.globalCompositeOperation = 'soft-light';
@@ -250,17 +359,8 @@
           case 'exclusion':
             ctx.globalCompositeOperation = 'exclusion';
             break;
-          case 'hue':
-            ctx.globalCompositeOperation = 'hue';
-            break;
-          case 'saturation':
-            ctx.globalCompositeOperation = 'saturation';
-            break;
           case 'color':
             ctx.globalCompositeOperation = 'color';
-            break;
-          case 'luminosity':
-            ctx.globalCompositeOperation = 'luminosity';
             break;
 
           default:
@@ -287,7 +387,24 @@
     clearCanvasButton.addEventListener('click', function () {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     });
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      ctx.lineWidth = 50;
+      ctx.lineJoin = 'round';
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = '#BADA55';
+      ctx.globalCompositeOperation = 'source-over';
+    }
+
+    // Initial resize to set up canvas correctly
+    resizeCanvas();
+
+    // Event listener for window resize
+    window.addEventListener('resize', resizeCanvas);
   </script>
+
 </body>
 
 </html>

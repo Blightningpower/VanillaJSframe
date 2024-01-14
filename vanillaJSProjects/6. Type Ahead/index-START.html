@@ -12,12 +12,23 @@
       display: flex;
       margin-top: 8%;
     }
+
+    h1 {
+      margin: 0;
+      text-align: center;
+      outline: 0;
+      position: relative;
+      z-index: 2;
+      color: cornsilk;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
   </style>
 </head>
 
 <body>
+  <h1>U.S. Cities and States filter</h1>
   <label>
-    <input type="checkbox" id="sortCheckbox"> Sort by Population (Low to High)
+    <input type="checkbox" id="sortCheckbox">Sort by Population (Low to High)
   </label>
   <form class="search-form">
     <input type="text" class="search" placeholder="City or State">
@@ -26,7 +37,7 @@
       <li>or a state</li>
     </ul>
   </form>
-  
+
   <script>
     const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
