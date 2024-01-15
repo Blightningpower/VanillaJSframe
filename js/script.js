@@ -4,14 +4,22 @@ document.addEventListener('DOMContentLoaded', function () {
     containers.forEach(function (container) {
         var titleElement = container.querySelector('.video-list__title');
 
-        container.addEventListener('click', function () {
+        container.addEventListener('click', function (event) {
+            // Check if the clicked element or any of its parents have the 'explanationButton' class
+            var target = event.target;
+            while (target != container) {
+                if (target.classList.contains('explanationButton')) {
+                    // If the clicked element is an explanationButton, do nothing and let the default behavior proceed
+                    return;
+                }
+                target = target.parentNode;
+            }
+
+            // If the clicked element is not an explanationButton, proceed with the original functionality
             var titleText = titleElement.textContent.trim();
             var link = 'vanillaJSProjects/' + encodeURIComponent(titleText) + '/index-START.html';
 
-            // Open the link in a new tab/window
             window.open(link, '_blank');
-
-            // Log the link for testing purposes
             console.log('Link:', link);
         });
     });
